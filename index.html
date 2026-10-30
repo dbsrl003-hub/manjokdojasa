@@ -173,7 +173,7 @@
       if (!supabase) return { ok: true, localOnly: true };
       const { id, source, date, answers, ...legacyFields } = response;
       const payload = { ...(answers ? { answers } : {}), ...legacyFields, date };
-      const { error } = await supabase.from('responses').insert([{ id, project_id: projectId, source: source || '온라인', data: payload }]);
+      const { error } = await supabase.from('structured_responses').insert([{ id, project_id: projectId, source: source || '온라인', data: payload }]);
       if (error) return { ok: false, error };
       return { ok: true };
     };
